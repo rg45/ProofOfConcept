@@ -1,7 +1,16 @@
 #include "stdafx.h"
 
-#include <boost/preprocessor.hpp>
+#include <iostream>
 #include <utility>
+
+template <bool cond, typename type = void>
+using EnableIf = typename std::enable_if<cond, type>::type;
+
+template <typename, typename type = void>
+struct EnableIfDeclared_ : std::enable_if<true, type> { };
+
+template <typename T, typename type = void>
+using EnableIfDeclared = typename EnableIfDeclared_<T, type>::type;
 
 template <typename T, typename = decltype(sizeof(int))>
 struct IsComplete : std::false_type { };
@@ -16,58 +25,49 @@ namespace SmartEnums
 {
 
 template <typename T, typename U = unsigned>
-class SmartEnumBase
+class $martEnumBase$
 {
+protected:
+   enum class $Entry$ : U;
 public:
-   using UnderlyingType = U;
-   enum class Entry : UnderlyingType { };
 
-   SmartEnumBase() = default;
-   SmartEnumBase(Entry v) : m(v) { }
-   explicit SmartEnumBase(UnderlyingType v) : m(Entry(v)) { }
+   $martEnumBase$() = default;
+   $martEnumBase$($Entry$ v) : m(v) { }
+   explicit $martEnumBase$(U v) : m(v) { }
 
-   operator Entry() const { return m; }
-
-#pragma warning(push)
-#pragma warning(disable : 4800)
-   explicit operator UnderlyingType() const { return UnderlyingType(m); }
-#pragma warning(pop)
+   operator $Entry$() const { return m; }
+   explicit operator U() const { return U(m); }
 
 private:
-   Entry m = Entry();
+   $Entry$ m = $Entry$();
+
+   friend constexpr auto operator | ($Entry$ lhs, $Entry$ rhs) { return $Entry$((U(lhs) | U(rhs))); }
+   friend constexpr auto operator & ($Entry$ lhs, $Entry$ rhs) { return $Entry$((U(lhs) & U(rhs))); }
+   friend auto& operator << (std::ostream& output, $Entry$ v) { return output << "[Smart Enum]: " << U(v); }
 };
-
-//template <typename> struct SmartEnumTraits;
-//template <typename T, typename U>
-//struct SmartEnumTraits<typename SmartEnumBase<T, U>::Entry>
-//{
-//};
-
-template <typename T, typename U>
-std::ostream& operator<<(std::ostream& output, SmartEnumBase<T, U> v)
-{
-   return output << "TestEnum: " << SmartEnumBase<T, U>::UnderlyingType(v);
-}
 
 } // namespace SmartEnums
 
 namespace ns
 {
 
-class TestEnum : public SmartEnums::SmartEnumBase<TestEnum>
+class TestEnum : public SmartEnums::$martEnumBase$<TestEnum>
 {
 public:
-   static constexpr Entry e1 = Entry(IsCompleteV<int>);
-   static constexpr Entry e2 = Entry(IsCompleteV<void>);
-   static constexpr Entry e3 = Entry(IsCompleteV<void*>);
-   static constexpr Entry e4 = Entry(IsCompleteV<void()>);
-   static constexpr Entry e5 = Entry(IsCompleteV<void(*)()>);
-   static constexpr Entry e6 = Entry(IsCompleteV<struct X>);
-   static constexpr Entry e7 = Entry(IsCompleteV<struct Y*>);
-   static constexpr Entry e8 = Entry(IsCompleteV<struct Y&>);
 
-   using SmartEnumBase::SmartEnumBase;
+   static constexpr auto Zero = $Entry$(0);
+   static constexpr auto One = $Entry$(1);
+   static constexpr auto Two = $Entry$(2);
+   static constexpr auto Three = One | Two;
+
+   using $martEnumBase$::$martEnumBase$;
 };
+
+template <typename T, typename U>
+auto& operator << (std::ostream& output, const std::pair<T, U>& p)
+{
+   return output << "(" << p.first << ", " << p.second << ")";
+}
 
 } // namespace ns
 
@@ -76,47 +76,25 @@ int main()
    using ns::TestEnum;
 
    std::cout << std::boolalpha;
-   std::cout << IsComplete<int>::value << std::endl;
-   std::cout << IsComplete<void>::value << std::endl;
-   std::cout << IsComplete<void*>::value << std::endl;
-   std::cout << IsComplete<void()>::value << std::endl;
-   std::cout << IsComplete<void(*)()>::value << std::endl;
-   std::cout << IsComplete<struct X>::value << std::endl;
-   std::cout << IsComplete<struct Y*>::value << std::endl;
-   std::cout << IsComplete<struct Y&>::value << std::endl;
-   std::cout << "---" << std::endl;
-   std::cout << IsCompleteV<int> << std::endl;
-   std::cout << IsCompleteV<void> << std::endl;
-   std::cout << IsCompleteV<void*> << std::endl;
-   std::cout << IsCompleteV<void()> << std::endl;
-   std::cout << IsCompleteV<void(*)()> << std::endl;
-   std::cout << IsCompleteV<struct X> << std::endl;
-   std::cout << IsCompleteV<struct Y*> << std::endl;
-   std::cout << IsCompleteV<struct Y&> << std::endl;
-   std::cout << "---" << std::endl;
-   std::cout << IsCompleteV<TestEnum::Entry> << std::endl;
-   std::cout << IsCompleteV<std::is_enum<TestEnum::Entry>> << std::endl;
+
+   std::cout << TestEnum::Zero << std::endl;
+   std::cout << TestEnum::One << std::endl;
+   std::cout << TestEnum::Two << std::endl;
+   std::cout << TestEnum::Three << std::endl;
    std::cout << "---" << std::endl;
 
-//   std::cout << TestEnum::e1 << std::endl;
-//   std::cout << TestEnum::e2 << std::endl;
-//   std::cout << TestEnum::e3 << std::endl;
-//   std::cout << TestEnum::e4 << std::endl;
-//   std::cout << TestEnum::e5 << std::endl;
-//   std::cout << TestEnum::e6 << std::endl;
-//   std::cout << TestEnum::e7 << std::endl;
-//   std::cout << TestEnum::e8 << std::endl;
-//   std::cout << "---" << std::endl;
+   const TestEnum v = TestEnum::Three;
+   std::cout << v << std::endl;
+   std::cout << (v == TestEnum::Two) << std::endl;
+   std::cout << (v == TestEnum::Three) << std::endl;
 
-   const TestEnum v = TestEnum::e7;
-   std::cout << (v == TestEnum::e7) << std::endl;
-   std::cout << (v == TestEnum::e8) << std::endl;
-
-   switch (v)
+   switch (v & TestEnum::One)
    {
-   case TestEnum::e7:
+   case TestEnum::One:
       std::cout << "Matched!" << std::endl;
       break;
    };
 
+   const std::pair<TestEnum, std::string> p { TestEnum::Three, "Three" };
+   std::cout << p << std::endl;
 }
