@@ -1,13 +1,17 @@
-#pragma once
+#include "stdafx.h"
+
+#include <iostream>
+#include <utility>
 
 namespace SmartEnums
 {
-namespace ProofOfContcept1
-{
-void main();
-} // namespace ProofOfContcept1
 namespace ProofOfContcept2
 {
-   void main();
+
+void main()
+{
+
+}
+
 } // namespace ProofOfContcept2
 } // namespace SmartEnums

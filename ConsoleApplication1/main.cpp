@@ -4,5 +4,5 @@
 
 int main()
 {
-   SmartEnums::ProofOfContcept1::main();
+   SmartEnums::ProofOfContcept2::main();
 }
