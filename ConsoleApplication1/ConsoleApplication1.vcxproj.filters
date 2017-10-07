@@ -15,6 +15,7 @@
     <ClCompile Include="SmartEnums\ProofOfConcept2.cpp">
       <Filter>SmartEnums</Filter>
     </ClCompile>
+    <ClCompile Include="CompileTimeStrings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />

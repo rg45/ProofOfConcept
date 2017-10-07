@@ -2,7 +2,11 @@
 
 #include "SmartEnums/SmartEnums.h"
 
+
 int main()
 {
-   SmartEnums::ProofOfContcept2::main();
+   //SmartEnums::ProofOfContcept2::main();
+
+   void CompileTimeStrings();
+   CompileTimeStrings();
 }
