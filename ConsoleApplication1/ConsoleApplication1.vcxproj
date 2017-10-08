@@ -142,15 +142,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="SmartEnums\SmartEnums.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CompileTimeStrings.cpp" />
     <ClCompile Include="EmplaceBackTest.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SmartEnums\ProofOfConcept1.cpp" />
-    <ClCompile Include="SmartEnums\ProofOfConcept2.cpp" />
+    <ClCompile Include="SmartEnums1.cpp" />
+    <ClCompile Include="SmartEnums2.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

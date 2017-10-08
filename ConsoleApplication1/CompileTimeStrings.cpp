@@ -47,6 +47,5 @@ void run()
 
 void CompileTimeStrings()
 {
-   using namespace CompileTimeStrings;
-   run();
+   CompileTimeStrings::run();
 }

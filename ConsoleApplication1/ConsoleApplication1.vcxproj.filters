@@ -2,28 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="SmartEnums\SmartEnums.h">
-      <Filter>SmartEnums</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SmartEnums\ProofOfConcept1.cpp">
-      <Filter>SmartEnums</Filter>
-    </ClCompile>
-    <ClCompile Include="SmartEnums\ProofOfConcept2.cpp">
-      <Filter>SmartEnums</Filter>
-    </ClCompile>
     <ClCompile Include="CompileTimeStrings.cpp" />
     <ClCompile Include="EmplaceBackTest.cpp" />
+    <ClCompile Include="SmartEnums2.cpp" />
+    <ClCompile Include="SmartEnums1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="SmartEnums">
-      <UniqueIdentifier>{37ca7c60-de64-4128-b7e5-bdd4edc89b2f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

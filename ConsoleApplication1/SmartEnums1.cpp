@@ -4,9 +4,9 @@
 #include <iostream>
 #include <utility>
 
-namespace SmartEnums
+namespace
 {
-namespace ProofOfContcept1
+namespace SmartEnums1
 {
 
 template <bool cond, typename type = void>
@@ -108,7 +108,7 @@ using SmartEnums::operator|;
 
 } // namespace ns
 
-void main()
+void run()
 {
    const ns::TestEnum2 x = ns::TestEnum2::one | ns::TestEnum2::two;
 
@@ -152,5 +152,10 @@ void main()
 
 }
 
-} // namespace ProofOfContcept1
-} // namespace SmartEnums
+} // namespace SmartEnums1
+} // namespace
+
+void SmartEnums1()
+{
+   SmartEnums1::run();
+}

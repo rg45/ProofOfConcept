@@ -4,9 +4,9 @@
 #include <map>
 #include <utility>
 
-namespace SmartEnums
+namespace
 {
-namespace ProofOfContcept2
+namespace SmartEnums2
 {
 namespace SmartEnums
 {
@@ -57,7 +57,7 @@ constexpr auto RegisterEntry()
 
 } // namespace SmartEnums
 
-void main()
+void run()
 {
    enum class TestEnum
    {
@@ -69,5 +69,10 @@ void main()
    std::cout << SmartEnums::UnderlyingType<TestEnum>(TestEnum::two) << std::endl;
 }
 
-} // namespace ProofOfContcept2
-} // namespace SmartEnums
+} // namespace SmartEnums2
+} // namespace
+
+void SmartEnums2()
+{
+   SmartEnums2::run();
+}
