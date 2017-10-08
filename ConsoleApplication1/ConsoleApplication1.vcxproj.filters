@@ -16,6 +16,7 @@
       <Filter>SmartEnums</Filter>
     </ClCompile>
     <ClCompile Include="CompileTimeStrings.cpp" />
+    <ClCompile Include="EmplaceBackTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />
