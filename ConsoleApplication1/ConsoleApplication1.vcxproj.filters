@@ -10,6 +10,7 @@
     <ClCompile Include="EmplaceBackTest.cpp" />
     <ClCompile Include="SmartEnums2.cpp" />
     <ClCompile Include="SmartEnums1.cpp" />
+    <ClCompile Include="CTCTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />

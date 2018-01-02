@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CompileTimeStrings.cpp" />
+    <ClCompile Include="CTCTest.cpp" />
     <ClCompile Include="EmplaceBackTest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SmartEnums1.cpp" />
