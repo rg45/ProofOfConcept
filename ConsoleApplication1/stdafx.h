@@ -5,4 +5,5 @@
 #include <utility>
 #include <type_traits>
 
+#include "TestList.h"
 #include "Trace.h"

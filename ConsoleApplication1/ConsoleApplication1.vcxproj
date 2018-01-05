@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TestList.h" />
     <ClInclude Include="Trace.h" />
   </ItemGroup>
   <ItemGroup>
