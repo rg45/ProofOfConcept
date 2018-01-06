@@ -4,6 +4,8 @@
 #include <type_traits>
 #include <limits>
 
+namespace
+{
 #define TRACE(exp) (std::cout << #exp " = " << (exp) << std::endl)
 
 #define IS_COMPLETE(T) IsComplete<T, __COUNTER__>::value
@@ -57,6 +59,8 @@ INCREMENT_CTC(ctc1)
 constexpr auto d3 = GET_CTC(ctc1);
 INCREMENT_CTC(ctc1)
 constexpr auto d4 = GET_CTC(ctc1);
+
+} // namespace
 
 void CTCTest()
 {
