@@ -4,6 +4,10 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Trace.h" />
     <ClInclude Include="TestList.h" />
+    <ClInclude Include="Utility\EnableIf.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -16,5 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="utility">
+      <UniqueIdentifier>{2a64eb13-5f6b-4e01-8f7f-84bd325c860a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

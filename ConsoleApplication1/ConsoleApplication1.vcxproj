@@ -151,6 +151,8 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TestList.h" />
     <ClInclude Include="Trace.h" />
+    <ClInclude Include="utility.h" />
+    <ClInclude Include="Utility\EnableIf.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CompileTimeStrings.cpp" />
