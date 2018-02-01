@@ -1,4 +1,5 @@
 #include <string>
+#include <boost/current_function.hpp>
 
 namespace poc
 {
@@ -12,7 +13,7 @@ class GetTypeNameImpl
 public:
 
    constexpr GetTypeNameImpl()
-   : m_funcSig(__FUNCSIG__)
+   : m_funcSig(BOOST_CURRENT_FUNCTION)
    , m_typenNameBegin(m_funcSig.find('<') + 1)
    , m_typeNameSize(m_funcSig.rfind('>') - m_typenNameBegin)
    {
