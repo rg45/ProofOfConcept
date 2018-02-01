@@ -8,6 +8,9 @@
       <Filter>utility</Filter>
     </ClInclude>
     <ClInclude Include="utility.h" />
+    <ClInclude Include="utility\GetTypeName.h">
+      <Filter>utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />

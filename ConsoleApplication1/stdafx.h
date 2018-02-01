@@ -7,3 +7,4 @@
 
 #include "TestList.h"
 #include "Trace.h"
+#include "utility.h"
