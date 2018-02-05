@@ -20,6 +20,9 @@
     <ClCompile Include="SmartEnums2.cpp" />
     <ClCompile Include="SmartEnums1.cpp" />
     <ClCompile Include="CTCTest.cpp" />
+    <ClCompile Include="utility\GetTypeName.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />

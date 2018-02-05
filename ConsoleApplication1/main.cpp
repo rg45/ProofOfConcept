@@ -3,6 +3,7 @@
 template <typename T>
 void testForwardingRef(T&& t)
 {
+   (t);
    std::cout << poc::utility::GetTypeName<T>() << std::endl;
    std::cout << poc::utility::GetTypeName<decltype(t)>() << std::endl;
    std::cout << poc::utility::GetTypeName<decltype((t))>() << std::endl;
@@ -10,7 +11,5 @@ void testForwardingRef(T&& t)
 
 int main()
 {
-   int i;
-
    testForwardingRef(int(42));
 }

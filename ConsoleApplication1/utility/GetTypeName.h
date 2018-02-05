@@ -5,34 +5,30 @@ namespace poc
 {
 namespace utility
 {
-namespace detail
+namespace GetTypeName_detail
 {
+
+std::string extractTypeNameFromFunctionSignature(const std::string&);
+
 template <typename T>
 class GetTypeNameImpl
 {
 public:
 
-   constexpr GetTypeNameImpl()
-   : m_funcSig(BOOST_CURRENT_FUNCTION)
-   , m_typenNameBegin(m_funcSig.find('<') + 1)
-   , m_typeNameSize(m_funcSig.rfind('>') - m_typenNameBegin)
-   {
-   }
+   GetTypeNameImpl() : m_typeName(extractTypeNameFromFunctionSignature(BOOST_CURRENT_FUNCTION)) { }
 
-   constexpr std::string operator()() const { return m_funcSig.substr(m_typenNameBegin, m_typeNameSize); }
+   std::string&& operator()() && { return std::move(m_typeName); }
 
 private:
-   std::string m_funcSig;
-   size_t m_typenNameBegin;
-   size_t m_typeNameSize;
+   std::string m_typeName;
 };
 
-} // namespace detail
+} // namespace GetTypeName_detail
 
 template <typename T>
-constexpr std::string GetTypeName()
+std::string GetTypeName()
 {
-   return detail::GetTypeNameImpl<T>()();
+   return GetTypeName_detail::GetTypeNameImpl<T>()();
 }
 
 } // namespace utility
