@@ -1,15 +1,9 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
-template <typename T>
-void testForwardingRef(T&& t)
-{
-   (t);
-   std::cout << poc::utility::GetTypeName<T>() << std::endl;
-   std::cout << poc::utility::GetTypeName<decltype(t)>() << std::endl;
-   std::cout << poc::utility::GetTypeName<decltype((t))>() << std::endl;
-}
+#include <iostream>
 
 int main()
 {
-   testForwardingRef(int(42));
+   CheckRound();
 }
+

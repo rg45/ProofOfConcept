@@ -5,3 +5,4 @@ void EmplaceBackTest();
 void SmartEnums1();
 void SmartEnums2();
 void CTCTest();
+void CheckRound();

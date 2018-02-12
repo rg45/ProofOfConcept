@@ -23,6 +23,7 @@
     <ClCompile Include="utility\GetTypeName.cpp">
       <Filter>utility</Filter>
     </ClCompile>
+    <ClCompile Include="CheckRound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />

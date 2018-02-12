@@ -160,6 +160,7 @@
     <ClInclude Include="utility\GetTypeName.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CheckRound.cpp" />
     <ClCompile Include="CompileTimeStrings.cpp" />
     <ClCompile Include="CTCTest.cpp" />
     <ClCompile Include="EmplaceBackTest.cpp" />
