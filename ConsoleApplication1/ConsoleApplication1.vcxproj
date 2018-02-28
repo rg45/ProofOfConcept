@@ -313,6 +313,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release(stlport)|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TestLinalg.cpp" />
     <ClCompile Include="utility\GetTypeName.cpp" />
   </ItemGroup>
   <ItemGroup>

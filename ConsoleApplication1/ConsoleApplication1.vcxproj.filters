@@ -24,6 +24,7 @@
       <Filter>utility</Filter>
     </ClCompile>
     <ClCompile Include="CheckRound.cpp" />
+    <ClCompile Include="TestLinalg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />
