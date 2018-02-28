@@ -1,6 +1,5 @@
 #include "stdafx.h"
 
-#include <boost/regex.hpp>
 #include <string>
 
 namespace poc
@@ -9,19 +8,13 @@ namespace utility
 {
 namespace GetTypeName_detail
 {
-namespace
-{
-
-const boost::regex functionSignaturePattern(R"(^[^<>]*(?:<(.*)>)?[^\[\]]*(?:\[with T = (.*)\])?.*$)");
-
-} // namespace
 
 std::string extractTypeNameFromFunctionSignature(const std::string& functionSignature)
 {
-   boost::smatch match;
-   return
-      boost::regex_match(functionSignature, match, functionSignaturePattern) ?
-      match[2].matched ? match[2] : match[1] :
+   const auto openBracketPos = functionSignature.find('<');
+   const auto closeBracketPos = functionSignature.rfind('>');
+   return openBracketPos != std::string::npos && closeBracketPos != std::string::npos ?
+      functionSignature.substr(openBracketPos + 1, closeBracketPos - openBracketPos - 1) :
       std::string();
 }
 
