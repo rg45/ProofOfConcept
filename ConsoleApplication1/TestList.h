@@ -8,5 +8,7 @@ void CTCTest();
 void CheckRound();
 void TestLinalg();
 void TestInitialization();
+void TestZipRange();
+
 
 

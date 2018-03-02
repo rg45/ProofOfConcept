@@ -315,6 +315,7 @@
     </ClCompile>
     <ClCompile Include="TestInitialization.cpp" />
     <ClCompile Include="TestLinalg.cpp" />
+    <ClCompile Include="TestZipRange.cpp" />
     <ClCompile Include="utility\GetTypeName.cpp" />
   </ItemGroup>
   <ItemGroup>
