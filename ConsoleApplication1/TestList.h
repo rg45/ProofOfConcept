@@ -7,4 +7,6 @@ void SmartEnums2();
 void CTCTest();
 void CheckRound();
 void TestLinalg();
+void TestInitialization();
+
 

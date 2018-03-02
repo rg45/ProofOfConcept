@@ -25,6 +25,7 @@
     </ClCompile>
     <ClCompile Include="CheckRound.cpp" />
     <ClCompile Include="TestLinalg.cpp" />
+    <ClCompile Include="TestInitialization.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />
