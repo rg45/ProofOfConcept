@@ -314,6 +314,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release(stlport)|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TestInitialization.cpp" />
+    <ClCompile Include="TestInitialization2.cpp" />
     <ClCompile Include="TestLinalg.cpp" />
     <ClCompile Include="TestZipRange.cpp" />
     <ClCompile Include="utility\GetTypeName.cpp" />
