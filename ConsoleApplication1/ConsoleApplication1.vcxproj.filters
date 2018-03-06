@@ -11,6 +11,7 @@
     <ClInclude Include="utility\GetTypeName.h">
       <Filter>utility</Filter>
     </ClInclude>
+    <ClInclude Include="accumulate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />

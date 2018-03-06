@@ -1,11 +1,8 @@
 ﻿#include "stdafx.h"
 
+#include "accumulate.h"
 #include <array>
-#include <functional>
 #include <iostream>
-#include <numeric>
-#include <type_traits>
-#include <utility>
 
 namespace
 {
@@ -15,10 +12,7 @@ template <typename T, size_t N>
 struct VectorSize<std::array<T, N>> : std::integral_constant<size_t, N> {};
 
 template <typename T>
-constexpr size_t vector_size()
-{
-   return VectorSize<std::decay_t<T>>::value;
-}
+constexpr size_t vector_size = VectorSize<std::decay_t<T>>::value;
 
 template <typename T, typename = void>
 struct ValueTypeAccessor
@@ -52,57 +46,11 @@ struct VectorViewMaker<T, std::index_sequence<I...>>
    using type = VectorView<T, I...>;
 };
 
-template <typename T, size_t N = vector_size<T>()>
+template <typename T, size_t N = vector_size<T>>
 using VectorViewLite = typename VectorViewMaker<T, std::make_index_sequence<N>>::type;
 
 template <size_t N, typename T = double>
 using Vector = VectorViewLite<std::array<T, N>>;
-
-template <typename BinOpT, typename T, typename...U>
-struct AccumulatedTypeProvider
-{
-   using type = decltype(std::declval<BinOpT>()(std::declval<T>(),
-      std::declval<typename AccumulatedTypeProvider<BinOpT, U...>::type>()));
-};
-
-template <typename BinOpT, typename T>
-struct AccumulatedTypeProvider<BinOpT, T>
-{
-   using type = T;
-};
-
-template <typename BinOpT, typename...T>
-using AccumulatedType = typename AccumulatedTypeProvider<BinOpT, T...>::type;
-
-template <typename...T>
-using ProductType = AccumulatedType<std::multiplies<>, T...>;
-
-template <typename...T>
-using SumType = AccumulatedType<std::plus<>, T...>;
-
-template <typename BinOpT, typename T>
-T&& accumulate(T&& t)
-{
-   return std::forward<T>(t);
-}
-
-template <typename BinOpT, typename T, typename...U>
-AccumulatedType<BinOpT, T, U...> accumulate(T&& t, U&&...u)
-{
-   return BinOpT()(std::forward<T>(t), accumulate<BinOpT>(std::forward<U>(u)...));
-}
-
-template <typename...T>
-SumType<T...> sum(T&&...t)
-{
-   return accumulate<std::plus<>>(std::forward<T>(t)...);
-}
-
-template <typename...T>
-ProductType<T...> product(T&&...t)
-{
-   return accumulate<std::multiplies<>>(std::forward<T>(t)...);
-}
 
 template <typename T, typename U, size_t...I>
 Vector<sizeof...(I), SumType<T, U>> operator + (const VectorView<T, I...>& t, const VectorView<U, I...>& u)

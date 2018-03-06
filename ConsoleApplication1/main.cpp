@@ -2,6 +2,6 @@
 
 int main()
 {
-   TestInitialization2();
+   TestLinalg();
 }
 

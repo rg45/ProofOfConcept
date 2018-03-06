@@ -288,6 +288,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="accumulate.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TestList.h" />
     <ClInclude Include="Trace.h" />
