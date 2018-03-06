@@ -11,6 +11,9 @@ template <typename, typename = void> struct VectorSize;
 template <typename T, size_t N>
 struct VectorSize<std::array<T, N>> : std::integral_constant<size_t, N> {};
 
+template <typename T, size_t N>
+struct VectorSize<T[N]> : std::integral_constant<size_t, N> {};
+
 template <typename T>
 constexpr size_t vector_size = VectorSize<std::decay_t<T>>::value;
 
@@ -30,12 +33,26 @@ constexpr const T& get(const std::initializer_list<T>& l, const T& def = T())
 }
 
 template <typename T, size_t...I>
-struct VectorView : T
+class VectorView
 {
+public:
    using value_type = ValueType<T>;
+   template <size_t> using Arg = value_type;
 
    VectorView() = default;
-   VectorView(std::initializer_list<value_type> l) : T{ get<I>(l)... } {}
+   VectorView(const Arg<I>&...t) : m{ t... } {}
+
+   template <size_t J>
+   friend value_type&& get(VectorView&& v) { return get<J>(std::move(v).m); }
+
+   template <size_t J>
+   friend value_type& get(VectorView& v) { return get<J>(v.m); }
+
+   template <size_t J>
+   friend const value_type& get(const VectorView& v) { return get<J>(v.m); }
+
+private:
+   T m;
 };
 
 template <typename, typename> struct VectorViewMaker;
@@ -53,22 +70,16 @@ template <size_t N, typename T = double>
 using Vector = VectorViewLite<std::array<T, N>>;
 
 template <typename T, typename U, size_t...I>
-Vector<sizeof...(I), SumType<T, U>> operator + (const VectorView<T, I...>& t, const VectorView<U, I...>& u)
-{
-   return Vector<sizeof...(I), SumType<T, U>>{(std::forward<T>(t)[I] + std::forward<T>(u)[I])...};
-}
-
-template <typename T, typename U, size_t...I>
 ProductType<ValueType<T>, ValueType<U>> dot(const VectorView<T, I...>& v, const VectorView<U, I...>& u)
 {
-   return sum(product(v[I], u[I])...);
+   return sum(product(get<I>(v), get<I>(u))...);
 }
 
 template <typename T, size_t...I>
 std::ostream& operator << (std::ostream& output, const VectorView<T, I...>& v)
 {
    output << "[";
-   std::initializer_list<int>{(output << " " << v[I], 0)...};
+   std::initializer_list<int>{(output << " " << get<I>(v), 0)...};
    return output << " ]";
 }
 
@@ -82,6 +93,6 @@ void TestLinalg()
    std::cout << res << std::endl;
    std::cout << v1 << std::endl;
 
-   std::cout << Vector<3, Vector<3>>{{1}, {1,2}, {1,2,3}} << std::endl;
+   std::cout << Vector<3, Vector<3>>{{1, 2, 3}, {1,2,3}, {1,2,3}} << std::endl;
 }
 
