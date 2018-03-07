@@ -34,7 +34,7 @@ void main()
       (name_60)(name_61)(name_62)(name_63)(name_64)(name_65)(name_66)(name_67)(name_68)(name_69)(name_6A)(name_6B)(name_6C)(name_6D)(name_6E)(name_6F)
       (name_70)(name_71)(name_72)(name_73)(name_74)(name_75)(name_76)(name_77)(name_78)(name_79)(name_7A)(name_7B)(name_7C)(name_7D)(name_7E)(name_7F)
       (name_80)(name_81)(name_82)(name_83)(name_84)(name_85)(name_86)(name_87)(name_88)(name_89)(name_8A)(name_8B)(name_8C)(name_8D)(name_8E)(name_8F)
-      (name_90)(name_91)(name_92)(name_93)(name_94)(name_95)(name_96)(name_97)(name_98)(name_99)(name_9A)(name_9B)(name_9C)(name_9D)(name_9E)(name_9F)
+//      (name_90)(name_91)(name_92)(name_93)(name_94)(name_95)(name_96)(name_97)(name_98)(name_99)(name_9A)(name_9B)(name_9C)(name_9D)(name_9E)(name_9F)
 //      (name_A0)(name_A1)(name_A2)(name_A3)(name_A4)(name_A5)(name_A6)(name_A7)(name_A8)(name_A9)(name_AA)(name_AB)(name_AC)(name_AD)(name_AE)(name_AF)
 //      (name_B0)(name_B1)(name_B2)(name_B3)(name_B4)(name_B5)(name_B6)(name_B7)(name_B8)(name_B9)(name_BA)(name_BB)(name_BC)(name_BD)(name_BE)(name_BF)
 //      (name_C0)(name_C1)(name_C2)(name_C3)(name_C4)(name_C5)(name_C6)(name_C7)(name_C8)(name_C9)(name_CA)(name_CB)(name_CC)(name_CD)(name_CE)(name_CF)
@@ -43,7 +43,7 @@ void main()
 //      (name_F0)(name_F1)(name_F2)(name_F3)(name_F4)(name_F5)(name_F6)(name_F7)(name_F8)(name_F9)(name_FA)(name_FB)(name_FC)(name_FD)(name_FE)(name_FF)
    );
 
-   std::cout << name_97::buf << std::endl;
+   std::cout << name_8F::buf << std::endl;
 
 }
 

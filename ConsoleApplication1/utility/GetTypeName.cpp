@@ -1,5 +1,6 @@
 #include "stdafx.h"
 
+#include <boost/regex.hpp>
 #include <string>
 
 namespace poc
@@ -9,13 +10,14 @@ namespace utility
 namespace GetTypeName_detail
 {
 
-std::string extractTypeNameFromFunctionSignature(const std::string& functionSignature)
+std::string extractTypeNameFromFunctionSignature(const std::string& signature)
 {
-   const auto openBracketPos = functionSignature.find('<');
-   const auto closeBracketPos = functionSignature.rfind('>');
-   return openBracketPos != std::string::npos && closeBracketPos != std::string::npos ?
-      functionSignature.substr(openBracketPos + 1, closeBracketPos - openBracketPos - 1) :
-      std::string();
+   static const boost::regex pattern("^[^<]*<(.*)>[^>]*$");
+   boost::smatch match;
+   if (regex_match(signature, match, pattern))
+      return match[1];
+   
+   throw std::runtime_error("Invalid signature: " + signature);
 }
 
 } // namespace GetTypeName_detail
