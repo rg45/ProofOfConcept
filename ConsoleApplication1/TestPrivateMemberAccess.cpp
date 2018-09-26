@@ -5,7 +5,7 @@
 namespace
 {
 
-template <typename ClassT, typename MemberT>
+template <typename TagT, typename ClassT, typename MemberT>
 struct StaticPointerToMemberTraits
 {
    using ClassType = ClassT;
@@ -13,9 +13,9 @@ struct StaticPointerToMemberTraits
    using PointerToMemberType = MemberType ClassType::*;
    static PointerToMemberType pointerToMember;
 };
-template <typename ClassT, typename MemberT>
-MemberT ClassT::* StaticPointerToMemberTraits<ClassT, MemberT>::pointerToMember = nullptr;
-
+template <typename TagT, typename ClassT, typename MemberT>
+MemberT ClassT::* StaticPointerToMemberTraits<TagT, ClassT, MemberT>::pointerToMember = nullptr;
+ 
 template <typename TagT> using ClassType = typename TagT::ClassType;
 template <typename TagT> using MemberType = typename TagT::MemberType;
 template <typename TagT> using PointerToMemberType = typename TagT::PointerToMemberType;
@@ -44,7 +44,7 @@ private:
 };
 
 #define ENABLE_PIVATE_MEMBER_ACCESS(TagT, ClassT, MemberT, member) \
-   struct TagT : StaticPointerToMemberTraits<ClassT, MemberT> { }; \
+   struct TagT : StaticPointerToMemberTraits<TagT, ClassT, MemberT> { }; \
    template class PrivateMemberAccessEnabler<TagT, &ClassT::member>;
 
 class A
