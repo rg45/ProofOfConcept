@@ -29,6 +29,7 @@
     <ClCompile Include="TestInitialization.cpp" />
     <ClCompile Include="TestZipRange.cpp" />
     <ClCompile Include="TestInitialization2.cpp" />
+    <ClCompile Include="TestCallableTraits.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />
