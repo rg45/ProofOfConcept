@@ -12,6 +12,8 @@ void TestInitialization2();
 void TestZipRange();
 void TestPrivateMemberAccess();
 void TestCallableTraits();
+void TestOrderRelatedAccumulate();
+
 
 
 

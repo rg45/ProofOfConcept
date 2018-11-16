@@ -166,6 +166,7 @@
     <ClCompile Include="CTCTest.cpp" />
     <ClCompile Include="EmplaceBackTest.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestOrderRelatedAccumulate.cpp" />
     <ClCompile Include="SmartEnums1.cpp" />
     <ClCompile Include="SmartEnums2.cpp" />
     <ClCompile Include="stdafx.cpp">

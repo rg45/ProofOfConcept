@@ -31,6 +31,7 @@
     <ClCompile Include="TestInitialization2.cpp" />
     <ClCompile Include="TestPrivateMemberAccess.cpp" />
     <ClCompile Include="TestCallableTraits.cpp" />
+    <ClCompile Include="TestOrderRelatedAccumulate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="ConsoleApplication1.natvis" />
