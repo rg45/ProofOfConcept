@@ -4,6 +4,8 @@
 #include <iostream>
 #include <utility>
 
+#pragma warning (disable : 4064) // switch of incomplete enum
+
 namespace
 {
 namespace SmartEnums1
